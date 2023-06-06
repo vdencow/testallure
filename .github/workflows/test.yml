@@ -6,15 +6,12 @@ on:
   workflow_dispatch:
 jobs:
   run:
-    strategy:
-      matrix:
-        node: ['18']
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node }}
+          node-version: '18'
       - name: npm ci
         run: npm ci
 
@@ -58,4 +55,4 @@ jobs:
           context: 'Allure report'
           state: 'success'
           sha: ${{ github.event.pull_request.head.sha || github.sha }}
-          target_url: https://vdencow.github.io/testallure/${{ github.run_number }}
+          target_url: https://vdencow.github.io/testallure/${{ github.run_number + 1 }}
