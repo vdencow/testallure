@@ -1,19 +1,14 @@
 name: Test
-
 env:
   CI: true
-
 on:
   push:
-  workflow_dispatch:
-
 jobs:
   run:
     strategy:
       matrix:
         node: ['18']
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -27,23 +22,22 @@ jobs:
         run: npx playwright install --with-deps > /dev/null
       - name: run features
         run: npm run test
-      - name: Get Allure history
-        uses: actions/checkout@v2
+      - name: Upload test results
         if: always()
-        continue-on-error: true
+        uses: actions/upload-artifact@v3
         with:
-          ref: gh-pages
-          path: gh-pages
+          name: test-result-report
+          path: reports/report.html
       - name: Test marketplace action
         uses: simple-elf/allure-report-action@master
         if: always()
-        #id: allure-report
+        id: allure-report
         with:
           allure_results: reports/allure-results
-          #gh_pages: gh-pages
+          gh_pages: gh-pages
           keep_reports: 15
-          #allure_report: allure-report
-          allure_history: allure-report
+          allure_report: allure-report
+          allure_history: allure-history
       - name: Deploy report to Github Pages
         if: always()
         uses: peaceiris/actions-gh-pages@v2
@@ -59,4 +53,4 @@ jobs:
           context: 'Test report'
           state: 'success'
           sha: ${{ github.event.pull_request.head.sha || github.sha }}
-          target_url: https://vdencow.github.io/testallure/${{ github.run_number }}
+          target_url: simple-elf.github.io/github-allure-history/${{ github.run_number }}
