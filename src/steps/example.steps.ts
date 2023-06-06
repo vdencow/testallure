@@ -9,12 +9,12 @@ Given('I am on the Google homepage', async function (this: ICustomWorld) {
 When(
   'I enter {string} into the search bar',
   async function (this: ICustomWorld, searchQuery: string) {
-    await this.page.getByRole('combobox', { name: 'Buscar' }).fill(searchQuery);
+    await this.page.getByRole('combobox', { name: 'Search' }).fill(searchQuery);
   },
 );
 
 When('I click the search button', async function (this: ICustomWorld) {
-  await this.page.getByRole('combobox', { name: 'Buscar' }).press('Enter');
+  await this.page.getByRole('combobox', { name: 'Search' }).press('Enter');
   await this.page.waitForNavigation();
 });
 
