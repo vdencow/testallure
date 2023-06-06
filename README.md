@@ -3,7 +3,7 @@
 E2E testing framework based on the [cucumber-playwright](https://github.com/Tallyb/cucumber-playwright) project, allowing for a
 smooth BDD experience with cucumberjs and playwright.
 
-[![example workflow](https://github.com/github/docs/actions/workflows/test.yml/badge.svg)](https://vdencow.github.io/testallure)
+[![example workflow](https://github.com/vdencow/testallure/actions/workflows/test.yml/badge.svg)](https://vdencow.github.io/testallure)
 
 ## To run your tests
 
