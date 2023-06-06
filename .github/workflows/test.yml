@@ -48,6 +48,10 @@ jobs:
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: allure-history
       - name: Post the link to the report
+        env:
+          RUN_NUMBER: ${{ github.run_number }}
+          run: |
+            echo ::set-env name=REPORT_VERSION::$(($RUN_NUMBER+1))
         if: always()
         uses: Sibz/github-status-action@v1
         with:
@@ -55,4 +59,4 @@ jobs:
           context: 'Allure report'
           state: 'success'
           sha: ${{ github.event.pull_request.head.sha || github.sha }}
-          target_url: https://vdencow.github.io/testallure/${{ github.run_number + 1 }}
+          target_url: https://vdencow.github.io/testallure/${{ REPORT_VERSION + 1 }}
