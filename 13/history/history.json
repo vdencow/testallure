@@ -1,0 +1,1 @@
+{"4ffefa5ee468b0cc3ffc6c0028e6631e":{"statistic":{"failed":0,"broken":0,"skipped":0,"passed":1,"unknown":0,"total":1},"items":[{"uid":"abdfdcef3fe7ea69","reportUrl":"https://vdencow.github.io/testallure/13//#testresult/abdfdcef3fe7ea69","status":"passed","time":{"start":1686071717313,"stop":1686071720634,"duration":3321}}]}}
