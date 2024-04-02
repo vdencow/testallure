@@ -14,6 +14,7 @@ const config = {
   require: ['src/**/*.ts'],
   format: [
     // 'message:e2e/reports/cucumber-report.ndjson',
+    'junit:artifacts/results.xml',
     'json:reports/cucumber-report.json',
     'html:reports/report.html',
     'summary',

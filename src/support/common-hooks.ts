@@ -67,10 +67,8 @@ After(async function (this: ICustomWorld, { result }: ITestCaseHookParameter) {
     if (result.status !== Status.PASSED) {
       const image = await this.page?.screenshot();
       image && (await this.attach(image, 'image/png'));
-      await this.context?.tracing.stop({
-        path: `${tracesDir}/${this.testName}-${
-          this.startTime?.toISOString().split('.')[0]
-        }trace.zip`,
+      await this.context?.tracing.stopChunk({
+        path: `${tracesDir}/${this.testName}`,
       });
     }
   }
